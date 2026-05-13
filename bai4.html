@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       
-       table {
+        table {
             width: 100%;
             border-collapse: collapse;
             font-family: Arial, sans-serif;
             margin-top: 20px;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
+
         th {
             background-color: #6d6d6e;
             color: white;
         }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        tr:hover { background-color: #f1f1f1; }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
+
 <body>
     <table id="workerTable">
         <thead>
@@ -38,56 +48,56 @@
             </tr>
         </thead>
         <tbody>
-            </tbody>
+        </tbody>
     </table>
-<script>
-    function Worker (id ,name, date, adress, salary, office ){
-        this.id =id
-        this.name = name
-        this.date = date
-        this.adress = adress
-        this.salary = salary
-        this.office = office
-    }
+    <script>
+        function Worker(name, date, adress, salary, office) {
 
-    let dsNhanVien = [
-            new Worker(1, "Nguyễn Văn A", "01/02/1999", "Hà Nội", 3000, "Công nhân"),
-            new Worker(2, "Trần Thị B", "15/05/1995", "Đà Nẵng", 4500, "Kế toán"),
-            new Worker(3, "Lê Văn C", "20/10/1992", "TP.HCM", 5000, "Kỹ sư"),
-            new Worker(4, "Phạm Minh D", "12/12/2000", "Cần Thơ", 2800, "Bảo vệ")
+            this.name = name
+            this.date = date
+            this.adress = adress
+            this.salary = salary
+            this.office = office
+        }
+
+        let dsNhanVien = [
+            new Worker("Nguyễn Văn A", "01/02/1999", "Hà Nội", 3000, "Công nhân"),
+            new Worker("brần Thị B", "15/05/1995", "Đà Nẵng", 4500, "Kế toán"),
+            new Worker("Lê Văn C", "20/10/1992", "TP.HCM", 5000, "Kỹ sư"),
+            new Worker("Phạm Minh D", "12/12/2000", "Cần Thơ", 2800, "Bảo vệ"),
+            new Worker("Phạm đỗ chính", "12/12/2000", "Cần Thơ", 2800, "Bảo vệ"),
+            new Worker("Phạm lã phương", "12/12/2000", "Cần Thơ", 2800, "Bảo vệ")
         ];
         function sortWorkersByName(dataArray) {
             dataArray.sort((a, b) => {
-            
+
                 return a.name.localeCompare(b.name, 'vi');
             });
         }
 
-    function renderTable(dataArray) {
+        function renderTable(dataArray) {
             const tableBody = document.querySelector("#workerTable tbody");
-            
-            
+
+
             tableBody.innerHTML = "";
 
-            
-            dataArray.forEach(item => {
+
+            dataArray.forEach((item, index) => {
                 let row = `<tr>
-                    <td>${item.id}</td>
-                    <td>${item.name}</td>
-                    <td>${item.date}</td>
-                    <td>${item.adress}</td>
-                    <td>${item.salary.toLocaleString()}$</td>
-                    <td>${item.office}</td>
-                </tr>`;
-                
-               
+            <td>${index + 1}</td> <td>${item.name}</td>
+            <td>${item.date}</td>
+            <td>${item.adress}</td>
+            <td>${item.salary.toLocaleString()}$</td>
+            <td>${item.office}</td>
+        </tr>`;
                 tableBody.innerHTML += row;
             });
         }
         sortWorkersByName(dsNhanVien);
-        
+
         renderTable(dsNhanVien);
-        
-</script>
+
+    </script>
 </body>
+
 </html>
