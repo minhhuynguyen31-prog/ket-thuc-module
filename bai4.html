@@ -56,6 +56,12 @@
             new Worker(3, "Lê Văn C", "20/10/1992", "TP.HCM", 5000, "Kỹ sư"),
             new Worker(4, "Phạm Minh D", "12/12/2000", "Cần Thơ", 2800, "Bảo vệ")
         ];
+        function sortWorkersByName(dataArray) {
+            dataArray.sort((a, b) => {
+            
+                return a.name.localeCompare(b.name, 'vi');
+            });
+        }
 
     function renderTable(dataArray) {
             const tableBody = document.querySelector("#workerTable tbody");
@@ -78,7 +84,7 @@
                 tableBody.innerHTML += row;
             });
         }
-
+        sortWorkersByName(dsNhanVien);
         
         renderTable(dsNhanVien);
         
